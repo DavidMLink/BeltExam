@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travel_app/css/omni.css' %}">
+</head>
+<body>
+    <div id="form2">
+        <a href="/">Go Back?</a>
+        <h2>Login here!</h2>
+
+        <form action="processLogin" method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p>Username:</p>
+            <input type="text" name="username">
+            <p>Password:</p>
+            <input type="password" name="password">
+            <br>
+            <br>
+            <input type="submit" value="Login!">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travel_app/css/omni.css' %}">
+</head>
+<body>
+    <a href="/clearSession">Log Off?</a>
+    <h1>Hello, {{request.session.full_name}}</h1>
+    <br>
+    <br>
+    <br>
+    <h4>Your Trip Schedules</h4>
+    <table>
+        <thead>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+        </thead>
+        <tbody>
+            <!-- FOR LOOP -->
+            {% for i in user_favorites%}
+            <tr>
+                <td><a href="/show/{{i.plan_id}}">{{i.plan.destination}}</a></td>
+                <td>{{i.plan.start_date}}</td>
+                <td>{{i.plan.end_date}}</td>
+                <td>{{i.plan.description}}</td>
+            </tr>
+            {% endfor %}
+            <!-- END OF FOR LOOP -->
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <h4>Other User's Travel Plans</h4>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do You Want To Join?</th>
+        </thead>
+        <tbody>
+            <!-- FOR LOOP -->
+            {% for i in all_plans %}
+            <tr>
+                <td>{{i.added_by.full_name}}</td>
+                <td><a href="/show/{{i.id}}">{{i.destination}}</a></td>
+                <td>{{i.start_date}}</td>
+                <td>{{i.end_date}}</td>
+                <td><a href="/joinPlan/{{i.id}}">Join</a></td>
+            </tr>
+            {% endfor %}
+            <!-- END OF FOR LOOP -->
+        </tbody>
+    </table>
+
+    <a href="/addPlanTemplate">Add Travel Plan</a>
+</body>
+</html>

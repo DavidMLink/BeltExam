@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travel_app/css/omni.css' %}">
+</head>
+<body>
+    <div id="form1">
+        <a href="loginTemplate">Log In?</a>
+
+        <h2>Register here!</h2>
+
+        <form action="processRegister" method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p>Full Name:</p>
+            <input type="text" name="full_name">
+            <p>Username:</p>
+            <input type="text" name="username">
+            <p>Password:</p>
+            <input type="password" name="password">
+            <p>Confirm password:</p>
+            <input type="password" name="confirm_password">
+            <br>
+            <br>
+            <input type="submit" value="Register!">
+        </form>
+    </div>  
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travel_app/css/omni.css' %}">
+</head>
+<body>
+
+    <a href="/clearSession">Logout</a>
+    <a href="/loggedIn">Home</a>
+
+    <fieldset>
+        <legend><h3>New Plan</h3></legend>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form action="/create_plan" method="post">
+            {% csrf_token %}
+            <p>Destination:</p>
+            <input type="text" name="destination">
+            <br>
+            <p>Description:</p>
+            <input type="text" name="description">
+            <br>
+            <p>Starting Date:</p>
+            <input type="text" name="start_date">
+            <br>
+            <p>Ending Date:</p>
+            <input type="text" name="end_date">
+            <br>
+            <input type="submit" value="Add Travel Plan">
+            <br>
+        </form>
+    </fieldset>
+</body>
+</html>

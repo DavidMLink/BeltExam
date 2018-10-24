@@ -1,0 +1,39 @@
+/* Omnus, omni genative latin meaning "all of css" or "all of my css" */
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    width: 960px;
+    margin: 0 auto;
+}
+
+a{
+    float: right;
+}
+
+td a {
+    float: left;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.error{
+    color: red;
+}
